@@ -14,7 +14,7 @@ const int greenPin = 10;
 const int bluePin = 9;
 
 
-int swellTime = 0;
+float swellTime = 0;
 int colorValue = 0;
 int newColorValue = 0;
 int delayDiv = 0;
@@ -90,7 +90,7 @@ void colorSwell()
 
 //Total time to loop through each color = ADC voltage * (Arduino Uno 10-bit resolution)
 float swellVolt = analogRead(swellPin) * 1/310;
-swellTime = swellVolt / 9; 
+swellTime = ((swellVolt / 3) * 4000) / 9; //3V max in; 4s max swell time; divided across 9 different colors
 
 //Black Initial
 setPWMRed(blkI [0], blkI [3], blkI [6]);
